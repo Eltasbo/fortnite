@@ -4,7 +4,7 @@ import '../assets/styles/components/Store.scss';
 export default ({category, children}) => {
     return(
         <div className='store'>
-            <h1>{category}</h1>
+            <h2 className="store__titles">{category}</h2>
             <div className="store__container">
                 {children}
             </div>

@@ -1,13 +1,13 @@
 import React from 'react';
 import Store from '../components/Store';
 import StoreItem from '../components/StoreItem';
-
 import '../assets/styles/App.scss';
+
 
 export default () => {
     return(
-        <div>
-            <h1>Fortnite store today!!</h1>
+        <div className="app">
+            <h1 className='store__titles'>Fortnite store today!!</h1>
             <Store category='daily'>
                 <StoreItem name='Vulture' background='https://media.fortniteapi.io/images/b50e64d52e20635594c1bc4a9360524c/background_full.en.png' />
                 <StoreItem name='Vulture' background='https://media.fortniteapi.io/images/b50e64d52e20635594c1bc4a9360524c/background_full.en.png' />
