@@ -1,28 +1,48 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Store from '../components/Store';
 import StoreItem from '../components/StoreItem';
 import '../assets/styles/App.scss';
 
 
 export default () => {
+    const [ daily, setDaily ] = useState([]);
+    const [ featured, setFeatured ] = useState([]);
+    const [ specialDaily, setSpecialDaily ] = useState([]);
+    const [ specialFeatured, setSpecialFeatured ] = useState([]);
+
+    useEffect(()=>{
+        const lang = 'en';//navigator.language.slice(0,2);
+        let url = `https://fortniteapi.io/shop?lang=${lang}`;
+        const config = {
+            method: 'GET',
+            headers: {
+                Authorization: 'a79e8da4-60310edd-84b45098-cc3e1bbe',
+            }
+        };
+
+        fetch(url, config)
+            .then(response => response.json())
+            .then(data => {
+                setDaily(data.daily);
+                setFeatured(data.featured);
+                setSpecialDaily(data.specialDaily);
+                setSpecialFeatured(data.specialFeatured);                
+            })
+    }, []);
+
     return(
         <div className="app">
             <h1 className='store__titles'>Fortnite store today!!</h1>
             <Store category='daily'>
-                <StoreItem name='Vulture' background='https://media.fortniteapi.io/images/b50e64d52e20635594c1bc4a9360524c/background_full.en.png' />
-                <StoreItem name='Vulture' background='https://media.fortniteapi.io/images/b50e64d52e20635594c1bc4a9360524c/background_full.en.png' />
-                <StoreItem name='Vulture' background='https://media.fortniteapi.io/images/b50e64d52e20635594c1bc4a9360524c/background_full.en.png' />
-                <StoreItem name='Vulture' background='https://media.fortniteapi.io/images/b50e64d52e20635594c1bc4a9360524c/background_full.en.png' />
-                <StoreItem name='Vulture' background='https://media.fortniteapi.io/images/b50e64d52e20635594c1bc4a9360524c/background_full.en.png' />
-                <StoreItem name='Vulture' background='https://media.fortniteapi.io/images/b50e64d52e20635594c1bc4a9360524c/background_full.en.png' />
-                <StoreItem name='Vulture' background='https://media.fortniteapi.io/images/b50e64d52e20635594c1bc4a9360524c/background_full.en.png' />
+                {daily.map((item)=>(
+                    <StoreItem name={item.name} background={item.full_background} />
+                ))}
             </Store>
 
             <Store category='feature'>
-                <StoreItem name='Dark Bomber' background='https://media.fortniteapi.io/images/9873376-84e54dd-54c54dd-9ce5a82/background_full.en.png' />
-                <StoreItem name='Dark Bomber' background='https://media.fortniteapi.io/images/9873376-84e54dd-54c54dd-9ce5a82/background_full.en.png' />
-                <StoreItem name='Dark Bomber' background='https://media.fortniteapi.io/images/9873376-84e54dd-54c54dd-9ce5a82/background_full.en.png' />
-                <StoreItem name='Dark Bomber' background='https://media.fortniteapi.io/images/9873376-84e54dd-54c54dd-9ce5a82/background_full.en.png' />
+                {featured.map((item)=>(
+                    <StoreItem name={item.name} background={item.full_background} />
+                ))}
             </Store>
         </div>
     );
