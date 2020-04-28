@@ -6,11 +6,11 @@ import '../assets/styles/App.scss';
 
 export default () => {
     const [ items, setItems ] = useState({
-        daily: [], featured: [], specialDaily : [], specialFeatured: []
+        daily: [], featured: [], specialDaily: [], specialFeatured: []
     });
 
     useEffect(()=>{
-        const lang = 'en';//navigator.language.slice(0,2);
+        const lang = navigator.language.slice(0,2);
         let url = `https://fortniteapi.io/shop?lang=${lang}`;
         const config = {
             method: 'GET',
@@ -33,7 +33,7 @@ export default () => {
             {items.daily.length > 0 &&
                 <Store category='daily'>
                     {items.daily.map((item)=>(
-                        <StoreItem key={item.id} name={item.name} background={item.full_background} />
+                        <StoreItem key={item.id} {...item} />
                     ))}
                 </Store>
             }
@@ -41,7 +41,7 @@ export default () => {
             {items.featured.length > 0 &&
                 <Store category='feature'>
                     {items.featured.map((item)=>(
-                        <StoreItem key={item.id} name={item.name} background={item.full_background} />
+                        <StoreItem key={item.id} {...item} />
                     ))}
                 </Store>
             }
@@ -49,7 +49,7 @@ export default () => {
             {items.specialDaily.length > 0 &&
                 <Store category='special daily'>
                     {items.specialDaily.map((item)=>(
-                        <StoreItem key={item.id} name={item.name} background={item.full_background} />
+                        <StoreItem key={item.id} {...item} />
                     ))}
                 </Store>
             }
@@ -57,7 +57,7 @@ export default () => {
             {items.specialFeatured.length > 0 &&
                 <Store category='special feature'>
                     {items.specialFeatured.map((item)=>(
-                        <StoreItem key={item.id} name={item.name} background={item.full_background} />
+                        <StoreItem key={item.id} {...item} />
                     ))}
                 </Store>
             }
