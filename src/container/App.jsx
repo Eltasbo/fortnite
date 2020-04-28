@@ -33,7 +33,7 @@ export default () => {
             {items.daily.length > 0 &&
                 <Store category='daily'>
                     {items.daily.map((item)=>(
-                        <StoreItem name={item.name} background={item.full_background} />
+                        <StoreItem key={item.id} name={item.name} background={item.full_background} />
                     ))}
                 </Store>
             }
@@ -41,7 +41,7 @@ export default () => {
             {items.featured.length > 0 &&
                 <Store category='feature'>
                     {items.featured.map((item)=>(
-                        <StoreItem name={item.name} background={item.full_background} />
+                        <StoreItem key={item.id} name={item.name} background={item.full_background} />
                     ))}
                 </Store>
             }
@@ -49,7 +49,7 @@ export default () => {
             {items.specialDaily.length > 0 &&
                 <Store category='special daily'>
                     {items.specialDaily.map((item)=>(
-                        <StoreItem name={item.name} background={item.full_background} />
+                        <StoreItem key={item.id} name={item.name} background={item.full_background} />
                     ))}
                 </Store>
             }
@@ -57,7 +57,7 @@ export default () => {
             {items.specialFeatured.length > 0 &&
                 <Store category='special feature'>
                     {items.specialFeatured.map((item)=>(
-                        <StoreItem name={item.name} background={item.full_background} />
+                        <StoreItem key={item.id} name={item.name} background={item.full_background} />
                     ))}
                 </Store>
             }
