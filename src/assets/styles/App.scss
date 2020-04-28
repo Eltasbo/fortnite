@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Luckiest+Guy|Open+Sans);
+@import "./Vars.scss";
+
 *{
     margin: 0;
     padding: 0;
@@ -7,6 +8,7 @@
 
 body{
     background-color: #1e1e1e;
+    font-family: $theme-font;
 }
 
 .app{
