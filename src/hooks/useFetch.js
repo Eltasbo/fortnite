@@ -10,11 +10,7 @@ export default (url, config={}) => {
         fetch(url, config)
             .then(response => response.json())
             .then(data => {
-                if(data.result === false) throw "failed";
                 setItems(data);
-            })
-            .catch(()=>{
-                setItems(defaultValues);
             });
     }, []);
 

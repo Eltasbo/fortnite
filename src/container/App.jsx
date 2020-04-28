@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Store from '../components/Store';
 import StoreItem from '../components/StoreItem';
 import useFetch from '../hooks/useFetch';
