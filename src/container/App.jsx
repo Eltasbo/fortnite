@@ -5,10 +5,9 @@ import '../assets/styles/App.scss';
 
 
 export default () => {
-    const [ daily, setDaily ] = useState([]);
-    const [ featured, setFeatured ] = useState([]);
-    const [ specialDaily, setSpecialDaily ] = useState([]);
-    const [ specialFeatured, setSpecialFeatured ] = useState([]);
+    const [ items, setItems ] = useState({
+        daily: [], featured: [], specialDaily : [], specialFeatured: []
+    });
 
     useEffect(()=>{
         const lang = 'en';//navigator.language.slice(0,2);
@@ -23,27 +22,45 @@ export default () => {
         fetch(url, config)
             .then(response => response.json())
             .then(data => {
-                setDaily(data.daily);
-                setFeatured(data.featured);
-                setSpecialDaily(data.specialDaily);
-                setSpecialFeatured(data.specialFeatured);                
+                setItems(data);              
             })
     }, []);
 
     return(
         <div className="app">
             <h1 className='store__titles'>Fortnite store today!!</h1>
-            <Store category='daily'>
-                {daily.map((item)=>(
-                    <StoreItem name={item.name} background={item.full_background} />
-                ))}
-            </Store>
 
-            <Store category='feature'>
-                {featured.map((item)=>(
-                    <StoreItem name={item.name} background={item.full_background} />
-                ))}
-            </Store>
+            {items.daily.length > 0 &&
+                <Store category='daily'>
+                    {items.daily.map((item)=>(
+                        <StoreItem name={item.name} background={item.full_background} />
+                    ))}
+                </Store>
+            }
+
+            {items.featured.length > 0 &&
+                <Store category='feature'>
+                    {items.featured.map((item)=>(
+                        <StoreItem name={item.name} background={item.full_background} />
+                    ))}
+                </Store>
+            }
+
+            {items.specialDaily.length > 0 &&
+                <Store category='special daily'>
+                    {items.specialDaily.map((item)=>(
+                        <StoreItem name={item.name} background={item.full_background} />
+                    ))}
+                </Store>
+            }
+
+            {items.specialFeatured.length > 0 &&
+                <Store category='special feature'>
+                    {items.specialFeatured.map((item)=>(
+                        <StoreItem name={item.name} background={item.full_background} />
+                    ))}
+                </Store>
+            }
         </div>
     );
 };
