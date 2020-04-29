@@ -1,3 +1,16 @@
-h1{
-    color: grey;
+@import "./Vars.scss";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #1e1e1e;
+    font-family: $theme-font;
+}
+
+.app{
+    padding: 50px 20px 20px 20px;
 }
