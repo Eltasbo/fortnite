@@ -1,4 +1,14 @@
-# Eltasbo fortnite.
+# Eltasbo fortnite
+
+## Info to deploy
+### requirements
+- now (npm i -g now)
+
+### commands
+- `$ now login`
+- `$ now --prod`
+
+---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
