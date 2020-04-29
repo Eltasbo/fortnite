@@ -6,7 +6,8 @@
 
 ### commands
 - `$ now login`
-- `$ now --prod`
+- `$ now` (deploy in staging area)
+- `$ now --prod` (deploy for production)
 
 ---
 
