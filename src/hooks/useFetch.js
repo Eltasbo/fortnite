@@ -12,7 +12,7 @@ export default (url, config={}) => {
             .then(data => {
                 setItems(data);
             });
-    }, []);
+    }, [url, config]);
 
     return items;
 }
