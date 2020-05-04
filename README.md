@@ -4,6 +4,10 @@
 ### requirements
 - now (npm i -g now)
 
+### configure enviroment
+- `Rename your .env.example to .env`
+- `Fill your .env file`
+
 ### commands
 - `$ now login`
 - `$ now` (deploy in staging area)
