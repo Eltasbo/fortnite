@@ -6,8 +6,6 @@ import { createGlobalStyle } from "styled-components";
 import * as serviceWorker from "./serviceWorker";
 
 const GlobalStyle = createGlobalStyle`
-  /* @import url('https://fonts.googleapis.com/css?family=Luckiest+Guy'); */
-
   *{
       margin: 0;
       padding: 0;
