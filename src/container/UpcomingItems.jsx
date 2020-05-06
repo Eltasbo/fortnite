@@ -1,6 +1,18 @@
 import React from "react";
+import styled from "styled-components";
 import Upcoming from "../components/Upcoming";
+import UpcomingItem from "../components/UpcomingItem";
 import useFetch from "../hooks/useFetch";
+
+const StyledApp = styled.div`
+  margin-top: 30px;
+`;
+
+const StyledH1 = styled.h1`
+  color: white;
+  text-align: center;
+  letter-spacing: 3px;
+`;
 
 const url = `${process.env.REACT_APP_FORTNITE_API_URL}/items/upcoming`;
 const config = {
@@ -14,15 +26,13 @@ const defaultValues = {
 export default () => {
   const upcomingItems = useFetch(url, config, defaultValues);
   return (
-    <>
-      <h1>Upcoming items</h1>
+    <StyledApp>
+      <StyledH1>Upcoming items</StyledH1>
       <Upcoming>
         {upcomingItems.items.map((item) => (
-          <div key={item.id}>
-            <img src={item.images.background} alt={item.name} />
-          </div>
+          <UpcomingItem key={item.id} {...item} />
         ))}
       </Upcoming>
-    </>
+    </StyledApp>
   );
 };
