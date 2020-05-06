@@ -1,13 +1,26 @@
-import React from 'react';
-import '../assets/styles/components/Store.scss';
+import React from "react";
+import styled from "styled-components";
+import Grid from "./Grid";
 
-export default ({category, children}) => {
-    return(
-        <div className='store'>
-            <h2 className="store__titles">{category}</h2>
-            <div className="store__container">
-                {children}
-            </div>
-        </div>
-    );
-}
+const StyledStore = styled.div`
+  margin: auto;
+  width: 90%;
+  @media screen and (max-width: 736px) {
+    width: 100%;
+  }
+`;
+
+const StyledH2 = styled.h2`
+  color: white;
+  text-align: center;
+  letter-spacing: 3px;
+`;
+
+export default ({ category, children }) => {
+  return (
+    <StyledStore>
+      <StyledH2> {category} </StyledH2>
+      <Grid nColumns="6"> {children} </Grid>
+    </StyledStore>
+  );
+};
